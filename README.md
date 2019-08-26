@@ -16,7 +16,7 @@
 
 [See Twenty Timer in action on Expo Snack!](https://snack.expo.io/@bdbaraban/twenty-timer)
 
-## Description :speech_balloon:
+### Description :speech_balloon:
 
 Twenty Timer is a mobile app for timing 20-minute/20-second intervals. During
 prolonged screen use, optometrists recommend what is termed the 20-20-20 rule -
@@ -24,13 +24,13 @@ for every 20 minutes spent looking at a screen, look at something 20 feet
 away for 20 seconds. Run this app to run automatic 20-minute/20-second intervals and
 protect your eyes!
 
-## Features :calling:
+### Features :calling:
 
-:blossom: Minimalist design.
-:rainbow: 6 color themes.
-:mobile_phone_off: Option to disable phone alerts and run timers automatically.
+- :blossom: Minimalist design.
+- :rainbow: 6 color themes.
+- :mobile_phone_off: Option to disable phone alerts and run timers automatically.
 
-## Development :computer:
+### Development :computer:
 
 Twenty Timer is built in React Native and Expo, using TypeScript. Code highlights include:
 
@@ -38,11 +38,11 @@ Twenty Timer is built in React Native and Expo, using TypeScript. Code highlight
   - Works using a combination of `useEffect`, `useRef` and `useState`.
   - [TimerCountdown.tsx](./components/TimerCountdown.tsx)
 - Global state management with [Mobx](https://mobx.js.org/).
-  - [store](./store)
+  - [store/](./store)
 - Three-screen navigation handled using [React Navigation](https://reactnavigation.org/).
   - [AppNavigator.tsx](./AppNavigator.tsx)
 
-## Dependencies :couple:
+### Dependencies :couple:
 
 Primary dependencies:
 
@@ -56,19 +56,19 @@ Primary dependencies:
 
 View the complete list of dependencies in [package.json](./package.json).
 
-## Limitations :confused:
+### Limitations :confused:
 
 In practice, this app would be most practical as a background app, a timer that can run even while foregrounded. Unfortunately... React Native does not currently offer great support for background processes, even less so for React Native Expo.
 
 Maybe possibly one day, I'll eject this application to introduce native background code, it will be wonderful, and I'll get the app officially published. But, at the moment, this is a bit beyond my scope :sweat_smile:.
 
-## Author :black_nib:
+### Author :black_nib:
 
 - **Brennan D Baraban**
   - <[GitHub](https://github.com/bdbaraban)>
   - <[LinkedIn](https://linkedin.com/in/bdbaraban)>
   - <[Portfolio](https://bdov.dev)>
 
-## License :lock:
+### License :lock:
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
