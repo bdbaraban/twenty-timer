@@ -4,7 +4,7 @@ import {
   ColorsScreen,
   HomeScreen,
   SettingsScreen
-} from '../screens';
+} from './screens';
 
 // Maps links to colors and alerts settings screens
 const SettingsNavigator = createStackNavigator(
@@ -29,7 +29,10 @@ const SettingsNavigator = createStackNavigator(
     }
   },
   {
-    headerMode: 'none'
+    headerMode: 'none',
+    navigationOptions: {
+      gesturesEnabled: false
+    }
   }
 );
 
@@ -37,10 +40,7 @@ const SettingsNavigator = createStackNavigator(
 const AppNavigator = createStackNavigator(
   {
     Home: {
-      screen: HomeScreen,
-      navigationOptions: {
-        gesturesEnabled: false
-      }
+      screen: HomeScreen
     },
     Settings: SettingsNavigator
   },
