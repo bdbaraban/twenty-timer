@@ -1,13 +1,12 @@
-// MobX store type
-export interface AppStore {
-  theme: string; // Theme hex color
-  alert: boolean; // Alerts on/off boolean
-}
+import { AppStore } from './types';
+import theme from '../theme';
 
 /**
  * Initialize the MobX store
  */
-export const createStore = (): AppStore => ({
-  theme: '#4b250c',
+const createStore = (): AppStore => ({
+  theme: { name: 'brown', ...theme.palette.brown },
   alert: true
 });
+
+export default createStore;
