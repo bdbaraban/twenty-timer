@@ -67,21 +67,7 @@ const HomeScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
   // Function called upon completion of 20 second timer
   const onTwentySeconds = (): void => {
     alertSound(TIMER_ENUM.SEC);
-    if (alert) {
-      Alert.alert(
-        'Twenty Minutes!',
-        'Look at something 20 feet away for 20 seconds.',
-        [
-          {
-            text: 'OK',
-            onPress: (): void => setTimer(TIMER_ENUM.MIN)
-          }
-        ],
-        { cancelable: false }
-      );
-    } else {
-      setTimer(TIMER_ENUM.MIN);
-    }
+    setTimer(TIMER_ENUM.MIN);
   };
 
   return (
