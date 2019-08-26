@@ -2,7 +2,7 @@ import React, { memo, ReactElement } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { scale } from 'react-native-size-matters';
-import AppStyle from '../styles/AppStyles';
+import { AppStyles } from '../styles';
 
 // EntypoNavigator component prop types
 interface EntypoNavigatorProps {
@@ -19,9 +19,9 @@ const EntypoNavigator = ({
   onPress
 }: EntypoNavigatorProps): ReactElement => {
   return (
-    <TouchableOpacity onPress={onPress} style={AppStyle.navigator}>
+    <TouchableOpacity onPress={onPress} style={AppStyles.navigator}>
       <View>
-        <Entypo name={name} size={scale(50)} style={AppStyle.icon} />
+        <Entypo name={name} size={scale(50)} style={AppStyles.icon} />
       </View>
     </TouchableOpacity>
   );
