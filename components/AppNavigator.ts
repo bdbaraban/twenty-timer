@@ -1,8 +1,10 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation';
-import AlertsScreen from './screens/AlertsScreen/AlertsScreen';
-import ColorsScreen from './screens/ColorsScreen/ColorsScreen';
-import HomeScreen from './screens/HomeScreen/HomeScreen';
-import SettingsScreen from './screens/SettingsScreen/SettingsScreen';
+import {
+  AlertsScreen,
+  ColorsScreen,
+  HomeScreen,
+  SettingsScreen
+} from '../screens';
 
 // Maps links to colors and alerts settings screens
 const SettingsNavigator = createStackNavigator(
