@@ -1,0 +1,52 @@
+{
+  "name": "twenty_timer",
+  "description": "Minimalist 20-20-20 eye timer",
+  "author": "Brennan D Baraban <brennan@bdov.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdbaraban/twenty_timer"
+  },
+  "main": "node_modules/expo/AppEntry.js",
+  "dependencies": {
+    "expo": "^34.0.4",
+    "expo-av": "~6.0.0",
+    "expo-linear-gradient": "~6.0.0",
+    "mobx": "^5.13.0",
+    "mobx-react": "^6.1.3",
+    "react": "16.9.0",
+    "react-dom": "^16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
+    "react-native-animatable": "^1.3.2",
+    "react-native-gesture-handler": "~1.3.0",
+    "react-native-reanimated": "~1.1.0",
+    "react-native-size-matters": "^0.2.1",
+    "react-native-web": "^0.11.4",
+    "react-navigation": "^3.11.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.2",
+    "@types/react-native": "^0.60.6",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "babel-preset-expo": "^6.0.0",
+    "eslint": "^6.2.2",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "eslint-plugin-react-native": "^3.7.0",
+    "prettier": "^1.18.2",
+    "typescript": "^3.5.3"
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
+  }
+}
