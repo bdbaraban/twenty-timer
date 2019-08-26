@@ -58,17 +58,18 @@ View the complete list of dependencies in [package.json](./package.json).
 
 ## Limitations :confused:
 
-In practice, this app would be most practical as a background app, a timer that can run even while foregrounded. Unfortunately... React Native does not currently offer great support for background processes, even less so for React Native Expo.
+In practice, this Twenty Timer would be most practical as a background app, a timer that can run even while foregrounded. Unfortunately... React Native does not currently offer great support for background processes, even less so for React Native Expo.
 
 Maybe possibly one day, I'll eject this application to introduce native background code, it will be wonderful, and I'll get the app officially published. But, at the moment, this is a bit beyond my scope :sweat_smile:.
 
 ## Author :black_nib:
 
 - **Brennan D Baraban**
-  - [GitHub](https://github.com/bdbaraban)
-  - [LinkedIn](https://linkedin.com/in/bdbaraban)
-  - [Portfolio](https://bdov.dev)
+  - Check out my other [GitHub](https://github.com/bdbaraban) projects.
+  - Connect with me on [LinkedIn](https://linkedin.com/in/bdbaraban).
+  - Follow me on [Twitter](https://twitter.com/bdov_).
+  - Be amazed by my [portfolio website](https://bdov.dev), also built in React!
 
-### License :lock:
+## License :lock:
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
