@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import { Text, TextProps } from 'react-native';
 
 /**
@@ -20,11 +20,21 @@ const TimerCountdown = ({
   ...rest
 }: TimerCountdownProps): ReactElement => {
   // Current seconds on timer
+  const secondsRef = useRef<number>();
   const [seconds, setSeconds] = useState<number>(initialSeconds);
+
+  // Interval id
+  const intervalRef = useRef<number>();
 
   // Tick one second
   const tick = (): void => {
-    setSeconds(seconds => seconds - 1);
+    if (secondsRef.current === 0) {
+      onTimeElapsed();
+      clearInterval(intervalRef.current);
+      secondsRef.current = undefined;
+    } else if (secondsRef.current !== undefined) {
+      setSeconds(--secondsRef.current);
+    }
   };
 
   // Format remaining seconds like `minutes`:`seconds`
@@ -38,18 +48,18 @@ const TimerCountdown = ({
     return `${min}:${sec}`;
   };
 
-  useEffect((): VoidFunction | undefined => {
-    if (seconds <= 0) {
-      onTimeElapsed();
-      return;
+  useEffect((): VoidFunction => {
+    if (secondsRef.current === undefined) {
+      setSeconds((secondsRef.current = initialSeconds));
     }
 
-    const intervalId = setInterval(tick, 1000);
+    const id = setInterval(tick, 1000);
+    intervalRef.current = id;
 
     return (): void => {
-      clearInterval(intervalId);
+      clearInterval(intervalRef.current);
     };
-  }, [initialSeconds]);
+  }, [initialSeconds, onTimeElapsed]);
 
   return <Text {...rest}>{getFormattedTime(seconds)}</Text>;
 };
