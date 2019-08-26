@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect } from 'react';
 import * as Font from 'expo-font';
 import { StoreProvider } from './store';
-import AppNavigator from './components/AppNavigator';
+import AppNavigator from './AppNavigator';
 
 /**
  * Entry point of application
