@@ -13,7 +13,7 @@ import {
 import { AppStyles, HomeScreenStyles } from '../styles';
 
 const TWENTY_MINUTES = 1200; // Twenty minutes in seconds
-const TWENTY_SECONDS = 20; // Twenty seconds in seconds
+const TWENTY_SECONDS = 20; // Twenty seconds
 
 // Timer state type enumeration
 enum TIMER_ENUM {
@@ -104,16 +104,14 @@ const HomeScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
                   { backgroundColor: theme.solid }
                 ]}
               />
-            ) : timer === TIMER_ENUM.MIN ? (
-              <TimerCountdown
-                initialSeconds={TWENTY_MINUTES}
-                onTimeElapsed={onTwentyMinutes}
-                style={[HomeScreenStyles.timer, { color: theme.solid }]}
-              />
             ) : (
               <TimerCountdown
-                initialSeconds={TWENTY_SECONDS}
-                onTimeElapsed={onTwentySeconds}
+                initialSeconds={
+                  timer === TIMER_ENUM.MIN ? TWENTY_MINUTES : TWENTY_SECONDS
+                }
+                onTimeElapsed={
+                  timer === TIMER_ENUM.MIN ? onTwentyMinutes : onTwentySeconds
+                }
                 style={[HomeScreenStyles.timer, { color: theme.solid }]}
               />
             )}
