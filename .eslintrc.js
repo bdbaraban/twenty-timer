@@ -45,9 +45,21 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['components/screens/HomeScreen/HomeScreen.tsx'],
+      files: ['screens/HomeScreen.tsx'],
       rules: {
         '@typescript-eslint/no-var-requires': 'off'
+      }
+    },
+    {
+      files: ['screens/SettingsScreen.tsx'],
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off'
+      }
+    },
+    {
+      files: ['babel.config.js'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off'
       }
     }
   ]
