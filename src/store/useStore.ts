@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import storeContext from './storeContext';
+import StoreContext from './StoreContext';
 import { AppStore } from './types';
 
 /**
  * Select the MobX store context
  */
 const useStore = (): AppStore => {
-  const store = useContext(storeContext);
+  const store = useContext(StoreContext);
   if (!store) {
     throw new Error('Er, did you use StoreProvider?');
   }

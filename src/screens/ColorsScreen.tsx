@@ -2,9 +2,11 @@ import React, { ReactElement } from 'react';
 import { Text, TouchableHighlight, View } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
 import { observer } from 'mobx-react';
-import { useStore } from '../store';
-import { BackgroundGradient, EntypoNavigator } from '../components';
-import { AppStyles, ColorsScreenStyles } from '../styles';
+import BackgroundGradient from '../components/BackgroundGradient';
+import EntypoNavigator from '../components/EntypoNavigator';
+import useStore from '../store/useStore';
+import AppStyles from '../styles/AppStyles';
+import ColorsScreenStyles from '../styles/ColorsScreenStyles';
 import theme from '../theme';
 
 /**
@@ -15,16 +17,19 @@ const ColorsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
   const store = useStore();
 
   return (
-    <View style={[AppStyles.screen, { backgroundColor: store.theme.solid }]}>
+    <View
+      accessibilityLabel="colors screen"
+      style={[AppStyles.screen, { backgroundColor: store.theme.solid }]}
+    >
       <BackgroundGradient />
 
       <View style={ColorsScreenStyles.container}>
         <TouchableHighlight
           onPress={(): void => {
-            store.theme = { name: 'brown', ...theme.palette.brown };
+            store.theme = { ...theme.palette.brown };
           }}
           style={
-            store.theme.name === 'brown'
+            store.theme.solid === theme.palette.brown.solid
               ? [
                   ColorsScreenStyles.option,
                   { backgroundColor: store.theme.transparent }
@@ -38,10 +43,10 @@ const ColorsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
 
         <TouchableHighlight
           onPress={(): void => {
-            store.theme = { name: 'green', ...theme.palette.green };
+            store.theme = { ...theme.palette.green };
           }}
           style={
-            store.theme.name === 'green'
+            store.theme.solid === theme.palette.green.solid
               ? [
                   ColorsScreenStyles.option,
                   { backgroundColor: store.theme.transparent }
@@ -55,10 +60,10 @@ const ColorsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
 
         <TouchableHighlight
           onPress={(): void => {
-            store.theme = { name: 'blue', ...theme.palette.blue };
+            store.theme = { ...theme.palette.blue };
           }}
           style={
-            store.theme.name === 'blue'
+            store.theme.solid === theme.palette.blue.solid
               ? [
                   ColorsScreenStyles.option,
                   { backgroundColor: store.theme.transparent }
@@ -72,10 +77,10 @@ const ColorsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
 
         <TouchableHighlight
           onPress={(): void => {
-            store.theme = { name: 'grey', ...theme.palette.grey };
+            store.theme = { ...theme.palette.grey };
           }}
           style={
-            store.theme.name === 'grey'
+            store.theme.solid === theme.palette.grey.solid
               ? [
                   ColorsScreenStyles.option,
                   { backgroundColor: store.theme.transparent }
@@ -89,10 +94,10 @@ const ColorsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
 
         <TouchableHighlight
           onPress={(): void => {
-            store.theme = { name: 'purple', ...theme.palette.purple };
+            store.theme = { ...theme.palette.purple };
           }}
           style={
-            store.theme.name === 'purple'
+            store.theme.solid === theme.palette.purple.solid
               ? [
                   ColorsScreenStyles.option,
                   { backgroundColor: store.theme.transparent }
@@ -106,6 +111,7 @@ const ColorsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
       </View>
 
       <EntypoNavigator
+        accessibilityLabel="back to settings screen"
         onPress={(): boolean => navigation.goBack()}
         name="chevron-left"
       />

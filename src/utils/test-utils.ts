@@ -4,7 +4,7 @@ import {
   RenderOptions,
   RenderResult
 } from '@testing-library/react-native';
-import { StoreProvider } from '../../store';
+import StoreProvider from '../store/StoreProvider';
 
 // Wrap render method with MobX store
 const customRender = (

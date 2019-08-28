@@ -2,9 +2,11 @@ import React, { ReactElement } from 'react';
 import { Linking, Text, TouchableHighlight, View } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
 import { observer } from 'mobx-react';
-import { useStore } from '../store';
-import { BackgroundGradient, EntypoNavigator } from '../components';
-import { AppStyles, SettingsScreenStyles } from '../styles';
+import BackgroundGradient from '../components/BackgroundGradient';
+import EntypoNavigator from '../components/EntypoNavigator';
+import useStore from '../store/useStore';
+import AppStyles from '../styles/AppStyles';
+import SettingsScreenStyles from '../styles/SettingsScreenStyles';
 
 /**
  * Settings screen linking to color and alerts menus
@@ -16,11 +18,15 @@ const SettingsScreen = ({
   const { theme } = useStore();
 
   return (
-    <View style={[AppStyles.screen, { backgroundColor: theme.solid }]}>
+    <View
+      accessibilityLabel="settings screen"
+      style={[AppStyles.screen, { backgroundColor: theme.solid }]}
+    >
       <BackgroundGradient />
 
       <View style={SettingsScreenStyles.container}>
         <TouchableHighlight
+          accessibilityLabel="to colors screen"
           onPress={(): boolean => navigation.navigate('Colors')}
           style={SettingsScreenStyles.option}
           underlayColor={theme.solid}
@@ -31,6 +37,7 @@ const SettingsScreen = ({
         <View style={SettingsScreenStyles.line} />
 
         <TouchableHighlight
+          accessibilityLabel="to alerts screen"
           onPress={(): boolean => navigation.navigate('Alerts')}
           style={SettingsScreenStyles.option}
           underlayColor={theme.solid}
@@ -52,6 +59,7 @@ const SettingsScreen = ({
       </View>
 
       <EntypoNavigator
+        accessibilityLabel="back to home screen"
         onPress={(): boolean => navigation.navigate('Home')}
         name="chevron-down"
       />

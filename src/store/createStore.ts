@@ -1,11 +1,11 @@
-import { AppStore } from './types';
 import theme from '../theme';
+import { AppStore } from './types';
 
 /**
  * Initialize the MobX store
  */
 const createStore = (): AppStore => ({
-  theme: { name: 'brown', ...theme.palette.brown },
+  theme: { ...theme.palette.brown },
   alert: true
 });
 

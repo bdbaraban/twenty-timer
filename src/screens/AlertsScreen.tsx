@@ -2,9 +2,11 @@ import React, { ReactElement } from 'react';
 import { Text, TouchableHighlight, View } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
 import { observer } from 'mobx-react';
-import { useStore } from '../store';
-import { AppStyles, AlertsScreenStyles } from '../styles';
-import { BackgroundGradient, EntypoNavigator } from '../components';
+import BackgroundGradient from '../components/BackgroundGradient';
+import EntypoNavigator from '../components/EntypoNavigator';
+import useStore from '../store/useStore';
+import AppStyles from '../styles/AppStyles';
+import AlertsScreenStyles from '../styles/AlertsScreenStyles';
 
 /**
  * Options screen for selecting alerts setting
@@ -14,7 +16,10 @@ const AlertsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
   const store = useStore();
 
   return (
-    <View style={[AppStyles.screen, { backgroundColor: store.theme.solid }]}>
+    <View
+      accessibilityLabel="alerts screen"
+      style={[AppStyles.screen, { backgroundColor: store.theme.solid }]}
+    >
       <BackgroundGradient />
 
       <View style={AlertsScreenStyles.container}>
@@ -66,6 +71,7 @@ const AlertsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
       </View>
 
       <EntypoNavigator
+        accessibilityLabel="back to settings screen"
         onPress={(): boolean => navigation.goBack()}
         name="chevron-left"
       />

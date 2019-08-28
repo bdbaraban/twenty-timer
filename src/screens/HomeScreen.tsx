@@ -4,13 +4,12 @@ import { Audio } from 'expo-av';
 import * as Animatable from 'react-native-animatable';
 import { NavigationScreenProps } from 'react-navigation';
 import { observer } from 'mobx-react';
-import { useStore } from '../store';
-import {
-  BackgroundGradient,
-  EntypoNavigator,
-  TimerCountdown
-} from '../components';
-import { AppStyles, HomeScreenStyles } from '../styles';
+import BackgroundGradient from '../components/BackgroundGradient';
+import EntypoNavigator from '../components/EntypoNavigator';
+import TimerCountdown from '../components/TimerCountdown';
+import useStore from '../store/useStore';
+import AppStyles from '../styles/AppStyles';
+import HomeScreenStyles from '../styles/HomeScreenStyles';
 
 const TWENTY_MINUTES = 1200; // Twenty minutes in seconds
 const TWENTY_SECONDS = 20; // Twenty seconds
@@ -35,7 +34,9 @@ const HomeScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
     if (timer === TIMER_ENUM.MIN) {
       await Audio.Sound.createAsync(
         require('../assets/sounds/to-the-point.mp3'),
-        { shouldPlay: true }
+        {
+          shouldPlay: true
+        }
       );
     } else {
       await Audio.Sound.createAsync(require('../assets/sounds/cheerful.mp3'), {
@@ -71,7 +72,10 @@ const HomeScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
   };
 
   return (
-    <View style={[AppStyles.screen, { backgroundColor: theme.solid }]}>
+    <View
+      accessibilityLabel="home screen"
+      style={[AppStyles.screen, { backgroundColor: theme.solid }]}
+    >
       <BackgroundGradient />
 
       <Animatable.View animation="fadeIn" duration={3000}>
@@ -106,6 +110,7 @@ const HomeScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
       </Animatable.View>
 
       <EntypoNavigator
+        accessibilityLabel="to settings screen"
         onPress={(): boolean => navigation.navigate('Settings')}
         name="chevron-up"
       />

@@ -1,11 +1,11 @@
 import React, { ReactElement, ReactNode } from 'react';
 import { useLocalStore } from 'mobx-react-lite';
 import createStore from './createStore';
-import storeContext from './storeContext';
+import StoreContext from './StoreContext';
 
 // StoreProvider component types
 interface StoreProviderProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 /**
@@ -14,7 +14,7 @@ interface StoreProviderProps {
 const StoreProvider = ({ children }: StoreProviderProps): ReactElement => {
   const store = useLocalStore(createStore);
   return (
-    <storeContext.Provider value={store}>{children}</storeContext.Provider>
+    <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
   );
 };
 

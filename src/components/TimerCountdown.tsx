@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
 import { Text, TextProps } from 'react-native';
+import getFormattedTime from '../utils/getFormattedTime';
 
 /**
  * TimerCountdown component prop types
@@ -37,15 +38,9 @@ const TimerCountdown = ({
     }
   };
 
-  // Format remaining seconds like `minutes`:`seconds`
-  const getFormattedTime = (secs: number): string => {
-    const minutes = Math.floor((secs % (60 * 60)) / 60);
-    const seconds = Math.ceil((secs % (60 * 60)) % 60);
-
-    const min = minutes < 10 ? `0${minutes}` : minutes;
-    const sec = seconds < 10 ? `0${seconds}` : seconds;
-
-    return `${min}:${sec}`;
+  // Clear interval
+  const clear = (): void => {
+    clearInterval(intervalRef.current);
   };
 
   useEffect((): VoidFunction => {
@@ -56,9 +51,7 @@ const TimerCountdown = ({
     const id = setInterval(tick, 1000);
     intervalRef.current = id;
 
-    return (): void => {
-      clearInterval(intervalRef.current);
-    };
+    return clear;
   }, [initialSeconds, onTimeElapsed]);
 
   return <Text {...rest}>{getFormattedTime(seconds)}</Text>;
