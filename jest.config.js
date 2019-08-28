@@ -20,7 +20,7 @@ module.exports = Object.assign(expoPreset, jestPreset, {
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|js?|tsx?|ts?)$',
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  moduleDirectories: ['node_modules', 'src/utils', __dirname],
+  moduleDirectories: ['node_modules', 'src/utils', 'src', __dirname],
   cacheDirectory: '.jest/cache',
   globals: {
     'ts-jest': {
