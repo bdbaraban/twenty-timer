@@ -60,7 +60,7 @@ test('clears interval on unmount', (): void => {
     <TimerCountdown initialSeconds={1} onTimeElapsed={(): void => {}} />
   );
 
+  expect(jest.getTimerCount()).toEqual(1);
   unmount();
-
   expect(jest.getTimerCount()).toEqual(0);
 });
