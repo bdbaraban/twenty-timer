@@ -8,6 +8,7 @@ import AppStyles from '../styles/AppStyles';
 const BackgroundGradient = (): ReactElement => {
   return (
     <LinearGradient
+      testID="background-gradient"
       colors={['transparent', 'rgba(0,0,0,.65)']}
       style={AppStyles.gradient}
     />
