@@ -14,7 +14,8 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
-    'plugin:jsx-a11y/recommended'
+    'plugin:jsx-a11y/recommended',
+    'plugin:jest/recommended'
   ],
   plugins: [
     '@typescript-eslint',
@@ -23,10 +24,12 @@ module.exports = {
     'react-hooks',
     'prettier',
     'import',
-    'jsx-a11y'
+    'jsx-a11y',
+    'jest'
   ],
   env: {
     'react-native/react-native': true,
+    jest: true,
     node: true
   },
   rules: {
@@ -38,6 +41,7 @@ module.exports = {
       version: 'detect'
     },
     'import/resolver': {
+      typescript: {},
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx']
       }
@@ -45,7 +49,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['screens/HomeScreen.tsx'],
+      files: ['*.js', 'screens/HomeScreen.tsx'],
       rules: {
         '@typescript-eslint/no-var-requires': 'off'
       }
@@ -57,7 +61,7 @@ module.exports = {
       }
     },
     {
-      files: ['babel.config.js'],
+      files: ['*.js'],
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off'
       }
