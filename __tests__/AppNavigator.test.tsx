@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, waitForElement } from '@testing-library/react-native';
 import { render } from 'test-utils';
-import AppNavigator from '../AppNavigator';
+import AppNavigator from 'AppNavigator';
 
 test('can navigate entire app', async () => {
   const { getByLabelText } = render(<AppNavigator />);
