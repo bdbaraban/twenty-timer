@@ -49,13 +49,13 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.js', 'screens/HomeScreen.tsx'],
+      files: ['*.js', 'src/screens/HomeScreen.tsx'],
       rules: {
         '@typescript-eslint/no-var-requires': 'off'
       }
     },
     {
-      files: ['screens/SettingsScreen.tsx'],
+      files: ['src/screens/SettingsScreen.tsx'],
       rules: {
         '@typescript-eslint/no-explicit-any': 'off'
       }
