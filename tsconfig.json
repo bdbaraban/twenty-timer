@@ -2,8 +2,13 @@
   "compilerOptions": {
     "target": "esnext",
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "jsx": "react-native",
     "lib": ["dom", "esnext"],
+    "baseUrl": ".",
+    "paths": {
+      "test-utils": ["./src/utils/test-utils"]
+    },
     "strict": true,
     "noUnusedLocals": true,
     "noImplicitAny": true,
@@ -17,5 +22,14 @@
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
-  "exclude": ["node_modules", ".expo-shared", ".expo", "assets"]
+  "exclude": [
+    "node_modules",
+    ".expo-shared",
+    ".expo",
+    ".jest",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ]
 }
