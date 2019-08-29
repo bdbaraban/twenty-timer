@@ -78,7 +78,7 @@ jobs:
     steps:
       - run:
           name: Login to Expo
-          command: yarn login -u $EXPO_USERNAME -p $EXPO_PASSWORD
+          command: yarn login:expo -u $EXPO_USERNAME -p $EXPO_PASSWORD
 
   clean:
     <<: *defaults
@@ -97,7 +97,7 @@ jobs:
     steps:
       - run:
           name: Publish to Expo
-          command: yarn publish
+          command: yarn publish:expo
 
 workflows:
   version: 2

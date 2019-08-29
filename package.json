@@ -74,8 +74,8 @@
     "start": "expo start",
     "eject": "expo eject",
     "clean": "rimraf .expo && rimraf .expo-shared",
-    "login": "expo login",
-    "deploy": "expo publish",
+    "login:expo": "expo login",
+    "publish:expo": "expo publish",
     "lint": "eslint **/*.{js,jsx,ts,tsx}",
     "test": "jest"
   }
