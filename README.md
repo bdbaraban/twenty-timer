@@ -2,12 +2,14 @@
 <p align="center">
   A minimilast 20-minute/20-second eye care timer for mobile.
 </p>
-<a href="https://circleci.com/gh/bdbaraban/twenty-timer" align="center">
-  <img
-    src="https://circleci.com/gh/bdbaraban/twenty-timer.svg?style=svg"
-    alt="CircleCI build status"
-  />
-</a>
+<p align="center">
+  <a href="https://circleci.com/gh/bdbaraban/twenty-timer">
+    <img
+      src="https://circleci.com/gh/bdbaraban/twenty-timer.svg?style=svg"
+      alt="CircleCI build status"
+    />
+  </a>
+</p>
 
 <p align="center">
   <img
