@@ -1,6 +1,6 @@
 {
   "name": "twenty_timer",
-  "description": "Minimalist 20-20-20 eye timer",
+  "description": "Minimalist 20-minute/20-second eye care timer mobile app",
   "author": "Brennan D Baraban <brennan@bdov.dev>",
   "license": "MIT",
   "version": "1.0.0",
@@ -58,8 +58,8 @@
     "ios": "expo start --ios",
     "start": "expo start",
     "eject": "expo eject",
-    "predeploy": "rimraf .expo && rimraf .expo-shared",
-    "deploy": "yarn predeploy && expo publish",
+    "clean": "rimraf .expo && rimraf .expo-shared",
+    "deploy": "yarn clean && expo publish",
     "lint": "eslint **/*.{js,jsx,ts,tsx}",
     "test": "jest"
   }
