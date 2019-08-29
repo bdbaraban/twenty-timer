@@ -4,17 +4,13 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/bdbaraban/twenty_timer/blob/master/screenshots/collage.png"
-   alt="Screenshot collage"
-  />
-</p>
-<p align="center">
-  <img src="https://github.com/bdbaraban/twenty_timer/blob/master/screenshots/collage2.png"
-   alt="Screenshot collage"
+  <img
+    src="https://github.com/bdbaraban/twenty-timer/blob/master/src/assets/demo.gif"
+    alt="Gif demonstrating app"
   />
 </p>
 
-[See Twenty Timer in action on Expo Snack!](https://snack.expo.io/@bdbaraban/twenty-timer)
+[Twenty Timer is published on Expo - download it now!](https://expo.io/@bdbaraban/twenty-timer)
 
 ## Description :speech_balloon:
 
