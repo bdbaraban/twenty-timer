@@ -78,7 +78,7 @@ jobs:
     steps:
       - run:
           name: Login to Expo
-          command: expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
+          command: npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
 
   clean:
     <<: *defaults
@@ -97,7 +97,7 @@ jobs:
     steps:
       - run:
           name: Publish to Expo
-          command: expo publish
+          command: npx expo publish
 
 workflows:
   version: 2
