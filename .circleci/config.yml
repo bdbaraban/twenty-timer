@@ -97,7 +97,7 @@ jobs:
     steps:
       - run:
           name: Publish to Expo
-          command: npx expo publish
+          command: npx expo publish --non-interactive
 
 workflows:
   version: 2
