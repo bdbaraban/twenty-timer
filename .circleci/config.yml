@@ -78,7 +78,7 @@ jobs:
     steps:
       - run:
           name: Login to Expo
-          command: npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
+          command: yarn login -u $EXPO_USERNAME -p $EXPO_PASSWORD
 
   clean:
     <<: *defaults
@@ -97,7 +97,7 @@ jobs:
     steps:
       - run:
           name: Publish to Expo
-          command: npx expo publish
+          command: yarn publish
 
 workflows:
   version: 2
@@ -147,6 +147,14 @@ workflows:
               ignore: /.*/
           requires:
             - checkout
+      - login:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+          requires:
+            - checkout
       - publish:
           filters:
             tags:
@@ -155,3 +163,4 @@ workflows:
               ignore: /.*/
           requires:
             - clean
+            - login
