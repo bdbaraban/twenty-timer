@@ -11,7 +11,9 @@
   />
 </p>
 
+<p align="center">
 [Twenty Timer is published on Expo - download it now!](https://expo.io/@bdbaraban/twenty-timer)
+</p>
 
 ## Description :speech_balloon:
 
@@ -27,7 +29,7 @@ protect your eyes!
 - 6 color themes.
 - Option to disable phone alerts and run timers automatically.
 
-## Code :high_brightness:
+## Code :coffee:
 
 Twenty Timer is built in React Native and Expo, using TypeScript. Code highlights include:
 
@@ -36,7 +38,7 @@ Twenty Timer is built in React Native and Expo, using TypeScript. Code highlight
   - Works using a combination of `useEffect`, `useRef` and `useState`.
   - [TimerCountdown.tsx](./components/TimerCountdown.tsx)
 
-- Global state management with [Mobx](https://mobx.js.org/).
+- Global state management with [MobX](https://mobx.js.org/).
 
   - [store/](./store)
 
@@ -46,7 +48,7 @@ Twenty Timer is built in React Native and Expo, using TypeScript. Code highlight
 
 - A complete test suite of unittests and integration tests.
 
-  - Written with [React Native Testing Library](https://www.native-testing-library.com/), run with [Jest](https://jestjs.io/)
+  - Written with [React Native Testing Library](https://www.native-testing-library.com/), run with [Jest](https://jestjs.io/).
   - [\_\_tests\_\_/](./__tests__)
 
 ## Dependencies :couple:
@@ -89,7 +91,7 @@ yarn start
 npm run start
 ```
 
-## Tests :ruler:
+## Tests :triangular_ruler:
 
 Twenty Timer includes an entire test suite! Run it with the following:
 
