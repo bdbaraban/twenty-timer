@@ -41,10 +41,6 @@ jobs:
           name: Install dependencies
           command: yarn install
 
-      - run:
-          name: Install Expo CLI
-          command: yarn add --dev expo-cli
-
       - save_cache:
           paths:
             - node_modules
