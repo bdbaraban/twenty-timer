@@ -1,0 +1,150 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+
+defaults: &defaults
+  working_directory: ~/twenty-timer
+  docker:
+    - image: circleci/node:10.16.3
+
+whitelist: &whitelist
+  paths:
+    - __tests__/*
+    - node_modules/*
+    - src/*
+    - .eslintignore
+    - .eslintrc.js
+    - app.json
+    - App.ts
+    - babel.config.js
+    - jest.config.js
+    - jest.setup.js
+    - LICENSE
+    - package.json
+    - README.md
+    - tsconfig.json
+
+jobs:
+  checkout:
+    <<: *defaults
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+
+      - run:
+          name: Install dependencies
+          command: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - persist_to_workspace:
+          root: ~/twenty-timer
+          <<: *whitelist
+
+  lint:
+    <<: *defaults
+
+    steps:
+      - attach_workspace:
+          at: ~/twenty-timer
+
+      - run:
+          name: Lint TypeScript code
+          command: yarn lint
+
+  test:
+    <<: *defaults
+
+    steps:
+      - attach_workspace:
+          at: ~/twenty-timer
+
+      - run:
+          name: Test code
+          command: yarn test
+
+  login:
+    <<: *defaults
+
+    steps:
+      - run:
+          name: Login to Expo
+          command: expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
+
+  clean:
+    <<: *defaults
+
+    steps:
+      - run:
+          name: Clean Expo cache
+          command: yarn clean
+
+  publish:
+    <<: *defaults
+
+    steps:
+      - run:
+          name: Publish to Expo
+          command: expo publish
+
+workflows:
+  version: 2
+
+  build:
+    jobs:
+      - checkout
+      - test:
+          requires:
+            - checkout
+      - lint:
+          requires:
+            - checkout
+      - clean
+
+  release:
+    jobs:
+      - checkout:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+      - test:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+          requires:
+            - checkout
+      - lint:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+          requires:
+            - checkout
+      - clean:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+      - publish:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+          requires:
+            - clean
