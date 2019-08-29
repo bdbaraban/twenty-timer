@@ -7,10 +7,18 @@
   <img
     src="https://github.com/bdbaraban/twenty-timer/blob/master/src/assets/demo.gif"
     alt="Gif demonstrating app"
+    width="275"
   />
 </p>
 
-[Twenty Timer is published on Expo - download it now!](https://expo.io/@bdbaraban/twenty-timer)
+<p align="center">
+ <a
+   href="https://expo.io/@bdbaraban/twenty-timer"
+   target="_blank"
+   rel="noopener noreferrer"
+ >
+   Twenty Timer is published on Expo - download it now!</a> 
+</p>
 
 ## Description :speech_balloon:
 
@@ -20,19 +28,22 @@ for every 20 minutes spent looking at a screen, look at something 20 feet
 away for 20 seconds. Run this app to run automatic 20-minute/20-second intervals and
 protect your eyes!
 
-## Features :calling:
+### Features
 
 - Minimalist design.
 - 6 color themes.
 - Option to disable phone alerts and run timers automatically.
 
-## Development :computer:
+## Code :high_brightness:
 
 Twenty Timer is built in React Native and Expo, using TypeScript. Code highlights include:
 
-- A custom, functional, entirely hook-based timer countdown component.
-  - Works using a combination of `useEffect`, `useRef` and `useState`.
-  - [TimerCountdown.tsx](./components/TimerCountdown.tsx)
+### A custom, functional, entirely hook-based timer countdown component.
+
+- Works using a combination of `useEffect`, `useRef` and `useState`.
+- [TimerCountdown.tsx](./components/TimerCountdown.tsx)
+
+Preview:
 
 ```typescript
 /**
@@ -83,8 +94,11 @@ const TimerCountdown = ({
 };
 ```
 
-- Global state management with [Mobx](https://mobx.js.org/).
-  - [store/](./store)
+Preview:
+
+### Global state management with [Mobx](https://mobx.js.org/).
+
+- [store/](./store)
 
 ```typescript
 /**
@@ -121,8 +135,11 @@ const useStore = (): AppStore => {
 };
 ```
 
-- Three-screen navigation handled using [React Navigation](https://reactnavigation.org/).
-  - [AppNavigator.tsx](./AppNavigator.tsx)
+### Three-screen navigation handled using [React Navigation](https://reactnavigation.org/).
+
+- [AppNavigator.tsx](./AppNavigator.tsx)
+
+Preview:
 
 ```typescript
 // Maps links to colors and alerts settings screens
@@ -171,19 +188,101 @@ const AppNavigator = createStackNavigator(
 );
 ```
 
+### A complete test suite of unittests and integration tests.
+
+- Written with [React Native Testing Library](https://www.native-testing-library.com/), run with [Jest](https://jestjs.io/)
+- [\_\_tests\_\_/](./__tests__)
+
+Preview:
+
+```typescript
+test('can navigate entire app', async () => {
+  const { getByTestId } = render(<AppNavigator />);
+
+  // Start on home screen
+  expect(getByTestId('home-screen')).toBeTruthy();
+
+  // Navigate to settings screen
+  fireEvent.press(getByTestId('home-to-settings'));
+  expect(
+    await waitForElement(() => getByTestId('settings-screen'))
+  ).toBeTruthy();
+
+  // Navigate to colors screen
+  fireEvent.press(getByTestId('settings-to-colors'));
+  expect(await waitForElement(() => getByTestId('colors-screen'))).toBeTruthy();
+
+  // Navigate back to settings screen
+  fireEvent.press(getByTestId('colors-to-settings'));
+  expect(
+    await waitForElement(() => getByTestId('settings-screen'))
+  ).toBeTruthy();
+
+  // Navigate to alerts screen
+  fireEvent.press(getByTestId('settings-to-alerts'));
+  expect(await waitForElement(() => getByTestId('alerts-screen'))).toBeTruthy();
+
+  // Navigate back to settings screen
+  fireEvent.press(getByTestId('alerts-to-settings'));
+  expect(
+    await waitForElement(() => getByTestId('settings-screen'))
+  ).toBeTruthy();
+
+  // Navigate back to home screen
+  fireEvent.press(getByTestId('settings-to-home'));
+  expect(await waitForElement(() => getByTestId('home-screen'))).toBeTruthy();
+});
+```
+
 ## Dependencies :couple:
 
-### Primary dependencies:
-
-| Library                                                  | Version                                                                                                                  |
+Primary dependencies:
+| Library | Version |
 | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| [Expo](https://expo.io/)                                 | ^34.0.4                                                                                                                  |
-| [React](https://reactjs.org/)                            | ^16.9.0                                                                                                                  |
+| [Expo](https://expo.io/) | ^34.0.4 |
+| [React](https://reactjs.org/) | ^16.9.0 |
 | [React Native](https://facebook.github.io/react-native/) | [github.com/expo/react-native/archive/sdk-34.0.0.tar.gz](https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz) |
-| [Mobx](https://mobx.js.org/)                             | ^5.13.0                                                                                                                  |
-| [React Navigation](https://reactnavigation.org/)         | ^3.12.1                                                                                                                  |
+| [Mobx](https://mobx.js.org/) | ^5.13.0 |
+| [React Navigation](https://reactnavigation.org/) | ^3.12.1 |
+| [React Native Testing Library](https://www.native-testing-library.com/) | ^4.0.8 |
 
 View the complete list of dependencies in [package.json](./package.json).
+
+## Development :computer:
+
+To run Twenty Timer locally, you must first ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/en/)
+  - I develop Twenty Timer on Node v10.16.3.
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/en/)
+  - I develop Twenty Timer using yarn
+- [Expo CLI](https://docs.expo.io/versions/latest/workflow/expo-cli/)
+
+Then, install dependencies:
+
+```
+yarn install
+# or
+npm install
+```
+
+Finally, start the Expo development server
+
+```
+yarn start
+# or
+npm run start
+```
+
+### Tests
+
+Twenty Timer includes an entire test suite! Run it with the following:
+
+```
+yarn test
+# or
+npm test
+```
 
 ## Limitations :confused:
 
