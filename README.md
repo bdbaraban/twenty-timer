@@ -12,7 +12,9 @@
 </p>
 
 <p align="center">
-[Twenty Timer is published on Expo - download it now!](https://expo.io/@bdbaraban/twenty-timer)
+  <a href="https://expo.io/@bdbaraban/twenty-timer">
+    Twenty Timer is published on Expo - download it now!
+  </a>
 </p>
 
 ## Description :speech_balloon:
@@ -26,7 +28,7 @@ protect your eyes!
 ### Features
 
 - Minimalist design.
-- 6 color themes.
+- 5 color themes.
 - Option to disable phone alerts and run timers automatically.
 
 ## Code :coffee:
@@ -60,7 +62,7 @@ Primary:
 | [Expo](https://expo.io/)                                                | ^34.0.4                                                                                                                  |
 | [React](https://reactjs.org/)                                           | ^16.9.0                                                                                                                  |
 | [React Native](https://facebook.github.io/react-native/)                | [github.com/expo/react-native/archive/sdk-34.0.0.tar.gz](https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz) |
-| [Mobx](https://mobx.js.org/)                                            | ^5.13.0                                                                                                                  |
+| [MobX](https://mobx.js.org/)                                            | ^5.13.0                                                                                                                  |
 | [React Navigation](https://reactnavigation.org/)                        | ^3.12.1                                                                                                                  |
 | [React Native Testing Library](https://www.native-testing-library.com/) | ^4.0.8                                                                                                                   |
 
