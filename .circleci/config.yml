@@ -84,6 +84,9 @@ jobs:
     <<: *defaults
 
     steps:
+      - attach_workspace:
+          at: ~/twenty-timer
+
       - run:
           name: Clean Expo cache
           command: yarn clean
