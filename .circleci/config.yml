@@ -76,6 +76,9 @@ jobs:
     <<: *defaults
 
     steps:
+      - attach_workspace:
+          at: ~/twenty-timer
+
       - run:
           name: Login to Expo
           command: yarn login:expo -u $EXPO_USERNAME -p $EXPO_PASSWORD
@@ -95,6 +98,9 @@ jobs:
     <<: *defaults
 
     steps:
+      - attach_workspace:
+          at: ~/twenty-timer
+
       - run:
           name: Publish to Expo
           command: yarn publish:expo
