@@ -1,17 +1,22 @@
 {
   "expo": {
     "name": "Twenty Timer",
-    "description": "A minimalist 20-20-20 eye care timer",
+    "description": "A minimalist 20-minute/20-second eye care timer. During prolonged screen use, optometrists recommend what is termed the 20-20-20 rule - for every 20 minutes spent looking at a screen, look at something 20 feet away for 20 seconds. Run this app to run automatic 20-minute/20-second intervals and protect your eyes!",
     "slug": "twenty-timer",
     "privacy": "public",
     "sdkVersion": "34.0.0",
-    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
+    "githubUrl": "https://github.com/bdbaraban/twenty-timer",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "primaryColor": "#4b250c",
+    "icon": "./src/assets/icon.png",
+    "platforms": ["ios", "android", "web"],
+    "androidStatusBar": {
+      "barStyle": "dark-content",
+      "backgroundColor": "#4b250c"
+    },
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#4b250c"
     },
     "updates": {
@@ -20,7 +25,6 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
-    },
-    "githubUrl": "https://github.com/bdbaraban/twenty-timer"
+    }
   }
 }

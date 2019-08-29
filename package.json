@@ -3,9 +3,10 @@
   "description": "Minimalist 20-20-20 eye timer",
   "author": "Brennan D Baraban <brennan@bdov.dev>",
   "license": "MIT",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bdbaraban/twenty_timer"
+    "url": "git+https://github.com/bdbaraban/twenty-timer"
   },
   "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
@@ -25,27 +26,41 @@
     "react-navigation": "^3.12.1"
   },
   "devDependencies": {
+    "@testing-library/react-native": "^4.0.8",
     "@types/expo": "^32.0.13",
+    "@types/jest": "^24.0.18",
     "@types/react": "^16.9.2",
     "@types/react-native": "^0.60.8",
+    "@types/react-test-renderer": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
     "babel-preset-expo": "^6.0.0",
     "eslint": "^6.2.2",
     "eslint-config-prettier": "^6.1.0",
     "eslint-config-react": "^1.1.7",
+    "eslint-import-resolver-typescript": "^1.1.1",
     "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.15.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     "eslint-plugin-react-native": "^3.7.0",
+    "jest-expo": "^34.0.1",
     "prettier": "^1.18.2",
+    "react-test-renderer": "^16.9.0",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   },
   "scripts": {
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "start": "expo start",
     "eject": "expo eject",
+    "predeploy": "rimraf .expo && rimraf .expo-shared",
+    "deploy": "yarn predeploy && expo publish",
     "lint": "eslint **/*.{js,jsx,ts,tsx}",
-    "start": "expo start"
+    "test": "jest"
   }
 }

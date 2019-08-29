@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders and matches snapshot 1`] = `
+<View
+  collapsable={true}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <TouchableOpacity
+    activeOpacity={0.2}
+    style={
+      Object {
+        "bottom": "5%",
+        "position": "absolute",
+        "right": "5%",
+      }
+    }
+    testID="entypo-navigator"
+  >
+    <View>
+      <Text />
+    </View>
+  </TouchableOpacity>
+</View>
+`;
