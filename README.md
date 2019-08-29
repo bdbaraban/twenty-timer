@@ -11,14 +11,7 @@
   />
 </p>
 
-<p align="center">
- <a
-   href="https://expo.io/@bdbaraban/twenty-timer"
-   target="_blank"
-   rel="noopener noreferrer"
- >
-   Twenty Timer is published on Expo - download it now!</a> 
-</p>
+[Twenty Timer is published on Expo - download it now!](https://expo.io/@bdbaraban/twenty-timer)
 
 ## Description :speech_balloon:
 
@@ -38,225 +31,47 @@ protect your eyes!
 
 Twenty Timer is built in React Native and Expo, using TypeScript. Code highlights include:
 
-### A custom, functional, entirely hook-based timer countdown component.
+- A custom, functional, entirely hook-based timer countdown component.
 
-- Works using a combination of `useEffect`, `useRef` and `useState`.
-- [TimerCountdown.tsx](./components/TimerCountdown.tsx)
+  - Works using a combination of `useEffect`, `useRef` and `useState`.
+  - [TimerCountdown.tsx](./components/TimerCountdown.tsx)
 
-Preview:
+- Global state management with [Mobx](https://mobx.js.org/).
 
-```typescript
-/**
- * Timer countdown component
- * @param initialSeconds - Initial countdown timer start time
- * @param onTimeElapsed - Function to call upon countdown completion
- */
-const TimerCountdown = ({
-  initialSeconds,
-  onTimeElapsed,
-  ...rest
-}: TimerCountdownProps): ReactElement => {
-  // Current seconds on timer
-  const secondsRef = useRef<number>();
-  const [seconds, setSeconds] = useState<number>(initialSeconds);
+  - [store/](./store)
 
-  // Interval id
-  const intervalRef = useRef<number>();
+- Three-screen navigation handled using [React Navigation](https://reactnavigation.org/).
 
-  // Tick one second
-  const tick = (): void => {
-    if (secondsRef.current === 0) {
-      onTimeElapsed();
-      clearInterval(intervalRef.current);
-      secondsRef.current = undefined;
-    } else if (secondsRef.current !== undefined) {
-      setSeconds(--secondsRef.current);
-    }
-  };
+  - [AppNavigator.tsx](./AppNavigator.tsx)
 
-  // Clear interval
-  const clear = (): void => {
-    clearInterval(intervalRef.current);
-  };
+- A complete test suite of unittests and integration tests.
 
-  useEffect((): VoidFunction => {
-    if (secondsRef.current === undefined) {
-      setSeconds((secondsRef.current = initialSeconds));
-    }
-
-    const id = setInterval(tick, 1000);
-    intervalRef.current = id;
-
-    return clear;
-  }, [initialSeconds, onTimeElapsed]);
-
-  return <Text {...rest}>{getFormattedTime(seconds)}</Text>;
-};
-```
-
-Preview:
-
-### Global state management with [Mobx](https://mobx.js.org/).
-
-- [store/](./store)
-
-```typescript
-/**
- * Initialize the MobX store
- */
-const createStore = (): AppStore => ({
-  theme: { ...theme.palette.brown },
-  alert: true
-});
-```
-
-```typescript
-/**
- * MobX store context HOC
- */
-const StoreProvider = ({ children }: StoreProviderProps): ReactElement => {
-  const store = useLocalStore(createStore);
-  return (
-    <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
-  );
-};
-```
-
-```typescript
-/**
- * Select the MobX store context
- */
-const useStore = (): AppStore => {
-  const store = useContext(StoreContext);
-  if (!store) {
-    throw new Error('Er, did you use StoreProvider?');
-  }
-  return store;
-};
-```
-
-### Three-screen navigation handled using [React Navigation](https://reactnavigation.org/).
-
-- [AppNavigator.tsx](./AppNavigator.tsx)
-
-Preview:
-
-```typescript
-// Maps links to colors and alerts settings screens
-const SettingsNavigator = createStackNavigator(
-  {
-    Settings: {
-      screen: SettingsScreen,
-      navigationOptions: {
-        gesturesEnabled: false
-      }
-    },
-    Colors: {
-      screen: ColorsScreen,
-      navigationOptions: {
-        gesturesEnabled: false
-      }
-    },
-    Alerts: {
-      screen: AlertsScreen,
-      navigationOptions: {
-        gesturesEnabled: false
-      }
-    }
-  },
-  {
-    headerMode: 'none',
-    navigationOptions: {
-      gesturesEnabled: false
-    }
-  }
-);
-
-// Maps link between home and settings screen
-const AppNavigator = createStackNavigator(
-  {
-    Home: {
-      screen: HomeScreen
-    },
-    Settings: SettingsNavigator
-  },
-  {
-    headerMode: 'none',
-    initialRouteName: 'Home',
-    mode: 'modal'
-  }
-);
-```
-
-### A complete test suite of unittests and integration tests.
-
-- Written with [React Native Testing Library](https://www.native-testing-library.com/), run with [Jest](https://jestjs.io/)
-- [\_\_tests\_\_/](./__tests__)
-
-Preview:
-
-```typescript
-test('can navigate entire app', async () => {
-  const { getByTestId } = render(<AppNavigator />);
-
-  // Start on home screen
-  expect(getByTestId('home-screen')).toBeTruthy();
-
-  // Navigate to settings screen
-  fireEvent.press(getByTestId('home-to-settings'));
-  expect(
-    await waitForElement(() => getByTestId('settings-screen'))
-  ).toBeTruthy();
-
-  // Navigate to colors screen
-  fireEvent.press(getByTestId('settings-to-colors'));
-  expect(await waitForElement(() => getByTestId('colors-screen'))).toBeTruthy();
-
-  // Navigate back to settings screen
-  fireEvent.press(getByTestId('colors-to-settings'));
-  expect(
-    await waitForElement(() => getByTestId('settings-screen'))
-  ).toBeTruthy();
-
-  // Navigate to alerts screen
-  fireEvent.press(getByTestId('settings-to-alerts'));
-  expect(await waitForElement(() => getByTestId('alerts-screen'))).toBeTruthy();
-
-  // Navigate back to settings screen
-  fireEvent.press(getByTestId('alerts-to-settings'));
-  expect(
-    await waitForElement(() => getByTestId('settings-screen'))
-  ).toBeTruthy();
-
-  // Navigate back to home screen
-  fireEvent.press(getByTestId('settings-to-home'));
-  expect(await waitForElement(() => getByTestId('home-screen'))).toBeTruthy();
-});
-```
+  - Written with [React Native Testing Library](https://www.native-testing-library.com/), run with [Jest](https://jestjs.io/)
+  - [\_\_tests\_\_/](./__tests__)
 
 ## Dependencies :couple:
 
-Primary dependencies:
-| Library | Version |
-| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| [Expo](https://expo.io/) | ^34.0.4 |
-| [React](https://reactjs.org/) | ^16.9.0 |
-| [React Native](https://facebook.github.io/react-native/) | [github.com/expo/react-native/archive/sdk-34.0.0.tar.gz](https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz) |
-| [Mobx](https://mobx.js.org/) | ^5.13.0 |
-| [React Navigation](https://reactnavigation.org/) | ^3.12.1 |
-| [React Native Testing Library](https://www.native-testing-library.com/) | ^4.0.8 |
+Primary:
+
+| Library                                                                 | Version                                                                                                                  |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| [Expo](https://expo.io/)                                                | ^34.0.4                                                                                                                  |
+| [React](https://reactjs.org/)                                           | ^16.9.0                                                                                                                  |
+| [React Native](https://facebook.github.io/react-native/)                | [github.com/expo/react-native/archive/sdk-34.0.0.tar.gz](https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz) |
+| [Mobx](https://mobx.js.org/)                                            | ^5.13.0                                                                                                                  |
+| [React Navigation](https://reactnavigation.org/)                        | ^3.12.1                                                                                                                  |
+| [React Native Testing Library](https://www.native-testing-library.com/) | ^4.0.8                                                                                                                   |
 
 View the complete list of dependencies in [package.json](./package.json).
 
 ## Development :computer:
 
-To run Twenty Timer locally, you must first ensure you have the following installed:
+To run Twenty Timer locally, you must have the following installed:
 
 - [Node.js](https://nodejs.org/en/)
   - I develop Twenty Timer on Node v10.16.3.
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/en/)
-  - I develop Twenty Timer using yarn
-- [Expo CLI](https://docs.expo.io/versions/latest/workflow/expo-cli/)
+  - I develop Twenty Timer using yarn.
 
 Then, install dependencies:
 
@@ -274,7 +89,7 @@ yarn start
 npm run start
 ```
 
-### Tests
+## Tests :ruler:
 
 Twenty Timer includes an entire test suite! Run it with the following:
 
