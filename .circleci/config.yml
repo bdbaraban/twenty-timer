@@ -108,7 +108,7 @@ workflows:
       - lint:
           requires:
             - checkout
-      - clean
+      - clean:
           requires:
             - checkout
 
