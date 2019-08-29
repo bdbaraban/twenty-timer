@@ -19,14 +19,17 @@ const SettingsScreen = ({
 
   return (
     <View
-      accessibilityLabel="settings screen"
-      style={[AppStyles.screen, { backgroundColor: theme.solid }]}
+      testID="settings-screen"
+      style={{ ...AppStyles.screen, backgroundColor: theme.solid }}
     >
       <BackgroundGradient />
 
       <View style={SettingsScreenStyles.container}>
         <TouchableHighlight
-          accessibilityLabel="to colors screen"
+          testID="settings-to-colors"
+          accessible={true}
+          accessibilityLabel="colors screen"
+          accessibilityHint="navigate to colors screen"
           onPress={(): boolean => navigation.navigate('Colors')}
           style={SettingsScreenStyles.option}
           underlayColor={theme.solid}
@@ -37,7 +40,10 @@ const SettingsScreen = ({
         <View style={SettingsScreenStyles.line} />
 
         <TouchableHighlight
-          accessibilityLabel="to alerts screen"
+          testID="settings-to-alerts"
+          accessible={true}
+          accessibilityLabel="alerts screen"
+          accessibilityHint="navigate to alerts screen"
           onPress={(): boolean => navigation.navigate('Alerts')}
           style={SettingsScreenStyles.option}
           underlayColor={theme.solid}
@@ -49,6 +55,8 @@ const SettingsScreen = ({
           <Text style={SettingsScreenStyles.infoText}>
             Developed by{'\n'}
             <Text
+              accessible={true}
+              accessibilityLabel="Brennan D Baraban's portfolio website"
               style={SettingsScreenStyles.link}
               onPress={(): Promise<any> => Linking.openURL('https://bdov.dev')}
             >
@@ -59,7 +67,10 @@ const SettingsScreen = ({
       </View>
 
       <EntypoNavigator
-        accessibilityLabel="back to home screen"
+        testID="settings-to-home"
+        accessible={true}
+        accessibilityLabel="home screen"
+        accessibilityHint="navigate back to home screen"
         onPress={(): boolean => navigation.navigate('Home')}
         name="chevron-down"
       />

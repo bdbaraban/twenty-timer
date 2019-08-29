@@ -18,22 +18,24 @@ const ColorsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
 
   return (
     <View
-      accessibilityLabel="colors screen"
-      style={[AppStyles.screen, { backgroundColor: store.theme.solid }]}
+      testID="colors-screen"
+      style={{ ...AppStyles.screen, backgroundColor: store.theme.solid }}
     >
       <BackgroundGradient />
 
       <View style={ColorsScreenStyles.container}>
         <TouchableHighlight
+          accessible={true}
+          accessibilityLabel="set brown theme"
           onPress={(): void => {
             store.theme = { ...theme.palette.brown };
           }}
           style={
             store.theme.solid === theme.palette.brown.solid
-              ? [
-                  ColorsScreenStyles.option,
-                  { backgroundColor: store.theme.transparent }
-                ]
+              ? {
+                  ...ColorsScreenStyles.option,
+                  backgroundColor: store.theme.transparent
+                }
               : ColorsScreenStyles.option
           }
           underlayColor={theme.palette.brown.solid}
@@ -42,15 +44,17 @@ const ColorsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
         </TouchableHighlight>
 
         <TouchableHighlight
+          accessible={true}
+          accessibilityLabel="set green theme"
           onPress={(): void => {
             store.theme = { ...theme.palette.green };
           }}
           style={
             store.theme.solid === theme.palette.green.solid
-              ? [
-                  ColorsScreenStyles.option,
-                  { backgroundColor: store.theme.transparent }
-                ]
+              ? {
+                  ...ColorsScreenStyles.option,
+                  backgroundColor: store.theme.transparent
+                }
               : ColorsScreenStyles.option
           }
           underlayColor={theme.palette.green.solid}
@@ -59,15 +63,17 @@ const ColorsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
         </TouchableHighlight>
 
         <TouchableHighlight
+          accessible={true}
+          accessibilityLabel="set blue theme"
           onPress={(): void => {
             store.theme = { ...theme.palette.blue };
           }}
           style={
             store.theme.solid === theme.palette.blue.solid
-              ? [
-                  ColorsScreenStyles.option,
-                  { backgroundColor: store.theme.transparent }
-                ]
+              ? {
+                  ...ColorsScreenStyles.option,
+                  backgroundColor: store.theme.transparent
+                }
               : ColorsScreenStyles.option
           }
           underlayColor={theme.palette.blue.solid}
@@ -76,15 +82,17 @@ const ColorsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
         </TouchableHighlight>
 
         <TouchableHighlight
+          accessible={true}
+          accessibilityLabel="set grey theme"
           onPress={(): void => {
             store.theme = { ...theme.palette.grey };
           }}
           style={
             store.theme.solid === theme.palette.grey.solid
-              ? [
-                  ColorsScreenStyles.option,
-                  { backgroundColor: store.theme.transparent }
-                ]
+              ? {
+                  ...ColorsScreenStyles.option,
+                  backgroundColor: store.theme.transparent
+                }
               : ColorsScreenStyles.option
           }
           underlayColor={theme.palette.grey.solid}
@@ -93,15 +101,17 @@ const ColorsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
         </TouchableHighlight>
 
         <TouchableHighlight
+          accessible={true}
+          accessibilityLabel="set purple theme"
           onPress={(): void => {
             store.theme = { ...theme.palette.purple };
           }}
           style={
             store.theme.solid === theme.palette.purple.solid
-              ? [
-                  ColorsScreenStyles.option,
-                  { backgroundColor: store.theme.transparent }
-                ]
+              ? {
+                  ...ColorsScreenStyles.option,
+                  backgroundColor: store.theme.transparent
+                }
               : ColorsScreenStyles.option
           }
           underlayColor={theme.palette.purple.solid}
@@ -111,7 +121,10 @@ const ColorsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
       </View>
 
       <EntypoNavigator
-        accessibilityLabel="back to settings screen"
+        testID="colors-to-settings"
+        accessible={true}
+        accessibilityLabel="settings screen"
+        accessibilityHint="navigate back to settings screen"
         onPress={(): boolean => navigation.goBack()}
         name="chevron-left"
       />

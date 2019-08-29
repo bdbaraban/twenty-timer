@@ -73,36 +73,48 @@ const HomeScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
 
   return (
     <View
-      accessibilityLabel="home screen"
-      style={[AppStyles.screen, { backgroundColor: theme.solid }]}
+      testID="home-screen"
+      style={{ ...AppStyles.screen, backgroundColor: theme.solid }}
     >
       <BackgroundGradient />
 
       <Animatable.View animation="fadeIn" duration={3000}>
         <TouchableOpacity
+          accessible={true}
+          accessibilityLabel={`eye-shaped countdown timer, ${
+            alert ? 'alerts on completion' : 'rings on completion'
+          }`}
+          accessibilityHint="toggle timer"
           onPress={(): void => {
             setRunning(!running);
             setTimer(TIMER_ENUM.MIN);
           }}
-          style={[HomeScreenStyles.eye, { borderColor: theme.solid }]}
+          style={{ ...HomeScreenStyles.eye, borderColor: theme.solid }}
         >
-          <View style={[HomeScreenStyles.retina, { borderColor: theme.solid }]}>
+          <View
+            testID="retina"
+            style={{ ...HomeScreenStyles.retina, borderColor: theme.solid }}
+          >
             {!running ? (
               <View
-                style={[
-                  HomeScreenStyles.pupil,
-                  { backgroundColor: theme.solid }
-                ]}
+                testID="pupil"
+                style={{
+                  ...HomeScreenStyles.pupil,
+                  backgroundColor: theme.solid
+                }}
               />
             ) : (
               <TimerCountdown
+                testID={`20 ${
+                  timer === TIMER_ENUM.MIN ? 'minute' : 'second'
+                } timer`}
                 initialSeconds={
                   timer === TIMER_ENUM.MIN ? TWENTY_MINUTES : TWENTY_SECONDS
                 }
                 onTimeElapsed={
                   timer === TIMER_ENUM.MIN ? onTwentyMinutes : onTwentySeconds
                 }
-                style={[HomeScreenStyles.timer, { color: theme.solid }]}
+                style={{ ...HomeScreenStyles.timer, color: theme.solid }}
               />
             )}
           </View>
@@ -110,7 +122,10 @@ const HomeScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
       </Animatable.View>
 
       <EntypoNavigator
-        accessibilityLabel="to settings screen"
+        testID="home-to-settings"
+        accessible={true}
+        accessibilityLabel="settings screen"
+        accessibilityHint="navigate to settings screen"
         onPress={(): boolean => navigation.navigate('Settings')}
         name="chevron-up"
       />

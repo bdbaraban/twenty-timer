@@ -17,22 +17,24 @@ const AlertsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
 
   return (
     <View
-      accessibilityLabel="alerts screen"
-      style={[AppStyles.screen, { backgroundColor: store.theme.solid }]}
+      testID="alerts-screen"
+      style={{ ...AppStyles.screen, backgroundColor: store.theme.solid }}
     >
       <BackgroundGradient />
 
       <View style={AlertsScreenStyles.container}>
         <TouchableHighlight
+          accessible={true}
+          accessibilityLabel="turn alerts on"
           onPress={(): void => {
             store.alert = true;
           }}
           style={
             store.alert
-              ? [
-                  AlertsScreenStyles.option,
-                  { backgroundColor: store.theme.transparent }
-                ]
+              ? {
+                  ...AlertsScreenStyles.option,
+                  backgroundColor: store.theme.transparent
+                }
               : AlertsScreenStyles.option
           }
           underlayColor={store.theme.solid}
@@ -47,15 +49,17 @@ const AlertsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
         </TouchableHighlight>
 
         <TouchableHighlight
+          accessible={true}
+          accessibilityLabel="turn alerts off"
           onPress={(): void => {
             store.alert = false;
           }}
           style={
             !store.alert
-              ? [
-                  AlertsScreenStyles.option,
-                  { backgroundColor: store.theme.transparent }
-                ]
+              ? {
+                  ...AlertsScreenStyles.option,
+                  backgroundColor: store.theme.transparent
+                }
               : AlertsScreenStyles.option
           }
           underlayColor={store.theme.solid}
@@ -71,7 +75,10 @@ const AlertsScreen = ({ navigation }: NavigationScreenProps): ReactElement => {
       </View>
 
       <EntypoNavigator
-        accessibilityLabel="back to settings screen"
+        testID="alerts-to-settings"
+        accessible={true}
+        accessibilityLabel="settings screen"
+        accessibilityHint="navigate back to settings screen"
         onPress={(): boolean => navigation.goBack()}
         name="chevron-left"
       />
