@@ -41,6 +41,10 @@ jobs:
           name: Install dependencies
           command: yarn install
 
+      - run:
+          name: Install Expo CLI
+          command: yarn add --dev expo-cli
+
       - save_cache:
           paths:
             - node_modules
@@ -97,7 +101,7 @@ jobs:
     steps:
       - run:
           name: Publish to Expo
-          command: npx expo publish --non-interactive
+          command: npx expo publish
 
 workflows:
   version: 2
