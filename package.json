@@ -1,6 +1,6 @@
 {
-  "name": "twenty_timer",
-  "description": "Minimalist 20-minute/20-second eye care timer mobile app",
+  "name": "twenty-timer",
+  "description": "Minimilast 20-minute/20-second eye care timer app built with React Native Expo",
   "author": "Brennan D Baraban <brennan@bdov.dev>",
   "license": "MIT",
   "version": "1.0.0",
@@ -8,6 +8,20 @@
     "type": "git",
     "url": "git+https://github.com/bdbaraban/twenty-timer"
   },
+  "bugs": {
+    "url": "https://github.com/bdbaraban/twenty-timer/issues"
+  },
+  "keywords": [
+    "react",
+    "react native",
+    "expo",
+    "mobx",
+    "react testing library",
+    "eye",
+    "timer",
+    "countdown",
+    "minimalist"
+  ],
   "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
     "expo": "^34.0.4",
