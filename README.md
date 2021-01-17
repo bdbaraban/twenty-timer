@@ -1,3 +1,7 @@
+## Retrospective 1/17/2021
+
+Wow, this application still holds up! This was my _first ever_ project in JavaScript, and React - React Native, specifically. The first version of this project was built before hooks were even a thing in React; I revisited this several months later to revamp it using hooks and functional components. Reviewing it now, I realize that this application was the first project in which I began to adopt the React design patterns I use and love today.
+
 <h1 align="center">Twenty Timer</h1>
 <p align="center">
   A minimilast 20-minute/20-second eye care timer for mobile.
