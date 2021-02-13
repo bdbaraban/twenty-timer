@@ -1,3 +1,9 @@
+### NOTE 2-13-2021
+
+Unfortunately, it appears the Expo SDK version used in this project is no longer supported by Expo.io, so please note that my published app is not currently working.
+
+---
+
 <h1 align="center">Twenty Timer</h1>
 <p align="center">
   A minimilast 20-minute/20-second eye care timer for mobile.
