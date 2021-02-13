@@ -2,6 +2,8 @@
 
 Unfortunately, it appears the Expo SDK version used in this project is no longer supported by Expo.io, so please note that my published app is not currently working.
 
+-- Brennan
+
 ---
 
 <h1 align="center">Twenty Timer</h1>
